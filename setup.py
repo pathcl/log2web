@@ -5,7 +5,7 @@ with open('README') as file:
 
 setup(
 	name='log2web',
-	version='0.0.1',
+	version='0.0.5',
 	py_modules=['log2web'],
 	author ='becxer',
 	author_email='becxer87@gmail.com',

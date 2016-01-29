@@ -44,6 +44,7 @@ log_file = ''
 @app.route("/info")
 def info():
     global log_file
+    print "Tail watching " + log_file + " .."
     if os.path.isfile(log_file):
         fo = open(log_file)
         content  = fo.read()
@@ -61,10 +62,16 @@ def view():
 def pick_unused_port():
     return random.randint(59000,59999)
 
-if __name__ == "__main__":
+def main():
+    global log_file
+    global refresh_msec
+    global app
     if len(sys.argv) < 3:
         print "usage : log2web sample.log 1000(refresh msec)"
         exit()
     log_file = sys.argv[1]
     refresh_msec = sys.argv[2]
     app.run(host="0.0.0.0",port=pick_unused_port())
+
+if __name__ == "__main__":
+    main()
